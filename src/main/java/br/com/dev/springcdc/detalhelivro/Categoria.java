@@ -18,6 +18,10 @@ public class Categoria {
     @Column(unique = true)
 	private String nomeCategoria;
 	
+    @Deprecated
+	public Categoria() {
+		
+	}
 
 	public Categoria(@NotBlank String nomeCategoria) {
 		super();
