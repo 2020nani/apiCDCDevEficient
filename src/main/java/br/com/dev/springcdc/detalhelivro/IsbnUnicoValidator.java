@@ -1,44 +1,28 @@
 package br.com.dev.springcdc.detalhelivro;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
 
 @Component
-public class IsbnUnicoValidator implements Validator {
+public class IsbnUnicoValidator extends CampoUnicoLivroValidator {
 	
-	private LivroRepository livrorepository;
-	
-	
-    
+	private LivroRepository livroRepository;
 
-	public IsbnUnicoValidator(LivroRepository livrorepository) {
-		this.livrorepository = livrorepository;
+	public IsbnUnicoValidator(LivroRepository livroRepository) {
+		this.livroRepository = livroRepository;
 	}
 
 	@Override
-	public boolean supports(Class<?> clazz) {
+	public boolean buscaLivroPorCampo(LivroForm livroform) {
 		
-		return LivroForm.class.isAssignableFrom(clazz);
+		return livroRepository.existsByIsbn(livroform.getIsbn());
 	}
 
 	@Override
-	public void validate(Object target, Errors errors) {
-		if(errors.hasErrors()) {
-			return;
-		}
+	protected String getNomeCampoInvalido() {
 		
-		LivroForm objeto = (LivroForm) target;
-		
-		boolean livroJaExiste = livrorepository.existsByIsbn(objeto.getIsbn());
-		
-		if(livroJaExiste) {
-			errors.rejectValue("isbn", null, "O isbn " + objeto.getIsbn() + " ja existe");
-		}
-		
+		return "isbn";
 	}
-
+	
 	
 
 }

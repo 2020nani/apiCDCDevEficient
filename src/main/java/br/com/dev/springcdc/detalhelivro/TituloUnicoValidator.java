@@ -3,7 +3,7 @@ package br.com.dev.springcdc.detalhelivro;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-public class TituloUnicoValidator implements Validator {
+public class TituloUnicoValidator extends CampoUnicoLivroValidator {
 	
 
 	private LivroRepository livrorepository;
@@ -13,22 +13,16 @@ public class TituloUnicoValidator implements Validator {
 	}
 
 	@Override
-	public boolean supports(Class<?> clazz) {
+	public boolean buscaLivroPorCampo(LivroForm livroform) {
 		
-		return LivroForm.class.isAssignableFrom(clazz);
+		return livrorepository.existsByTitulo(livroform.getTitulo());
 	}
 
 	@Override
-	public void validate(Object target, Errors errors) {
+	protected String getNomeCampoInvalido() {
 		
-		LivroForm objeto = (LivroForm) target;
-		
-		boolean tituloJaExiste = livrorepository.existsByTitulo(objeto.getTitulo());
-		
-		if(tituloJaExiste) {
-			errors.rejectValue("titulo", null, "O titulo " + objeto.getTitulo() + " nao esta disponivel");
-		}
-
+		return "titulo";
 	}
+
 
 }
