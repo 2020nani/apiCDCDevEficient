@@ -58,7 +58,7 @@ public class LivroForm {
 		String linkCapaLivro = funcaoUpload.apply(capa);
 		return new Livro(this.titulo,this.subtitulo,this.preco, this.conteudo,this.numeroPaginas,this.isbn,linkCapaLivro,autor);
 	}
-
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -68,6 +68,5 @@ public class LivroForm {
 		return isbn;
 	}
 
-	
 	
 }

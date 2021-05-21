@@ -49,6 +49,49 @@ public class Livro {
 	@NotNull
 	@ManyToOne
     private Autor autor;
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+	
+
+	public Autor getAutor() {
+		return autor;
+	}
+	
+	
+
+	public String getSubtitulo() {
+		return subtitulo;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public int getNumeroPaginas() {
+		return numeroPaginas;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+	
+	
+
+	@Deprecated
+	public Livro() {
+		super();
+	}
 
 	public Livro(@NotBlank @Size(max = 100) String titulo, @NotBlank @Size(max = 50) String subtitulo,
 			@Min(20) BigDecimal preco, @NotBlank String conteudo, @Min(100) int numeroPaginas, @NotBlank String isbn,

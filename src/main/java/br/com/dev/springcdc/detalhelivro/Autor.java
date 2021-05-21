@@ -24,6 +24,9 @@ public class Autor {
 	@NotBlank
 	@URL
 	private String linkgithub;
+	
+	@NotBlank
+	private String descricao;
 
 	@PastOrPresent
 	private LocalDateTime createdAt = LocalDateTime.now();
@@ -33,16 +36,32 @@ public class Autor {
 	
 	}
 
-	public Autor (@NotBlank String nome, @NotBlank @URL String linkgithub) {
+	public Autor (@NotBlank String nome, @NotBlank @URL String linkgithub, @NotBlank String descricao) {
 
 		this.nome = nome;
 		this.linkgithub = linkgithub;
+		this.descricao = descricao;
 	}
+
+	
 
 	@Override
 	public String toString() {
-		return "Autor [id=" + id + ", nome=" + nome + ", linkgithub=" + linkgithub + "]";
+		return "Autor [id=" + id + ", nome=" + nome + ", linkgithub=" + linkgithub + ", descricao=" + descricao + "]";
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getLinkgithub() {
+		return linkgithub;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+	
 	
 	
 

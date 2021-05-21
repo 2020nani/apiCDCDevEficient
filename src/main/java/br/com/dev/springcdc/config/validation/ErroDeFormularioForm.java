@@ -9,6 +9,9 @@ public class ErroDeFormularioForm {
 		this.campo = campo;
 		this.erro = erro;
 	}
+	public ErroDeFormularioForm( String erro) {
+		this.erro = erro;
+	}
 
 	public String getCampo() {
 		return campo;

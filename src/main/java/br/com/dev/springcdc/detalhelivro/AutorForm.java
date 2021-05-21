@@ -12,16 +12,20 @@ public class AutorForm {
 	@NotBlank
 	@URL
 	private String linkgithub;
+	
+	@NotBlank
+	private String descricao;
 
-	public AutorForm(@NotBlank String nome, @NotBlank @URL String linkgithub) {
+	public AutorForm(@NotBlank String nome, @NotBlank @URL String linkgithub, @NotBlank String descricao) {
 		super();
 		this.nome = nome;
 		this.linkgithub = linkgithub;
+		this.descricao = descricao;
 	}
 
 	public Autor novoAutor() {
 		
-		return new Autor(this.nome, this.linkgithub);
+		return new Autor(this.nome, this.linkgithub, this.descricao);
 	}
 	
 	
